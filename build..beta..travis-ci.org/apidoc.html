@@ -1,0 +1,1586 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api-documentation for
+    <a
+        
+        href="https://github.com/koajs/koa#readme"
+        
+    >koa (v2.2.0)</a>
+</h1>
+<h4>Koa web app framework</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+    
+    <li class="apidocModuleLi"><a href="#apidoc.module.koa">module koa</a><ol>
+        
+        <li>
+            
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">koa.</span>context</span>
+            
+        </li>
+        
+        <li>
+            
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">koa.</span>request</span>
+            
+        </li>
+        
+        <li>
+            
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">koa.</span>response</span>
+            
+        </li>
+        
+    </ol></li>
+    
+    <li class="apidocModuleLi"><a href="#apidoc.module.koa.context">module koa.context</a><ol>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.context.accepts">
+            function <span class="apidocSignatureSpan">koa.context.</span>accepts
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.context.acceptsCharsets">
+            function <span class="apidocSignatureSpan">koa.context.</span>acceptsCharsets
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.context.acceptsEncodings">
+            function <span class="apidocSignatureSpan">koa.context.</span>acceptsEncodings
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.context.acceptsLanguages">
+            function <span class="apidocSignatureSpan">koa.context.</span>acceptsLanguages
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.context.append">
+            function <span class="apidocSignatureSpan">koa.context.</span>append
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.context.assert">
+            function <span class="apidocSignatureSpan">koa.context.</span>assert
+            <span class="apidocSignatureSpan">(value, status, msg, opts)</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.context.attachment">
+            function <span class="apidocSignatureSpan">koa.context.</span>attachment
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.context.flushHeaders">
+            function <span class="apidocSignatureSpan">koa.context.</span>flushHeaders
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.context.get">
+            function <span class="apidocSignatureSpan">koa.context.</span>get
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.context.inspect">
+            function <span class="apidocSignatureSpan">koa.context.</span>inspect
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.context.is">
+            function <span class="apidocSignatureSpan">koa.context.</span>is
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.context.onerror">
+            function <span class="apidocSignatureSpan">koa.context.</span>onerror
+            <span class="apidocSignatureSpan">(err)</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.context.redirect">
+            function <span class="apidocSignatureSpan">koa.context.</span>redirect
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.context.remove">
+            function <span class="apidocSignatureSpan">koa.context.</span>remove
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.context.set">
+            function <span class="apidocSignatureSpan">koa.context.</span>set
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.context.throw">
+            function <span class="apidocSignatureSpan">koa.context.</span>throw
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.context.toJSON">
+            function <span class="apidocSignatureSpan">koa.context.</span>toJSON
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.context.vary">
+            function <span class="apidocSignatureSpan">koa.context.</span>vary
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+            
+        </li>
+        
+    </ol></li>
+    
+    <li class="apidocModuleLi"><a href="#apidoc.module.koa.request">module koa.request</a><ol>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.request.accepts">
+            function <span class="apidocSignatureSpan">koa.request.</span>accepts
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.request.acceptsCharsets">
+            function <span class="apidocSignatureSpan">koa.request.</span>acceptsCharsets
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.request.acceptsEncodings">
+            function <span class="apidocSignatureSpan">koa.request.</span>acceptsEncodings
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.request.acceptsLanguages">
+            function <span class="apidocSignatureSpan">koa.request.</span>acceptsLanguages
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.request.get">
+            function <span class="apidocSignatureSpan">koa.request.</span>get
+            <span class="apidocSignatureSpan">(field)</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.request.inspect">
+            function <span class="apidocSignatureSpan">koa.request.</span>inspect
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.request.is">
+            function <span class="apidocSignatureSpan">koa.request.</span>is
+            <span class="apidocSignatureSpan">(types)</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.request.toJSON">
+            function <span class="apidocSignatureSpan">koa.request.</span>toJSON
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">koa.request.</span>_querycache</span>
+            
+        </li>
+        
+        <li>
+            
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">koa.request.</span>query</span>
+            
+        </li>
+        
+        <li>
+            
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">koa.request.</span>querystring</span>
+            
+        </li>
+        
+        <li>
+            
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">koa.request.</span>search</span>
+            
+        </li>
+        
+    </ol></li>
+    
+    <li class="apidocModuleLi"><a href="#apidoc.module.koa.response">module koa.response</a><ol>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.response.append">
+            function <span class="apidocSignatureSpan">koa.response.</span>append
+            <span class="apidocSignatureSpan">(field, val)</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.response.attachment">
+            function <span class="apidocSignatureSpan">koa.response.</span>attachment
+            <span class="apidocSignatureSpan">(filename)</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.response.flushHeaders">
+            function <span class="apidocSignatureSpan">koa.response.</span>flushHeaders
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.response.get">
+            function <span class="apidocSignatureSpan">koa.response.</span>get
+            <span class="apidocSignatureSpan">(field)</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.response.inspect">
+            function <span class="apidocSignatureSpan">koa.response.</span>inspect
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.response.is">
+            function <span class="apidocSignatureSpan">koa.response.</span>is
+            <span class="apidocSignatureSpan">(types)</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.response.redirect">
+            function <span class="apidocSignatureSpan">koa.response.</span>redirect
+            <span class="apidocSignatureSpan">(url, alt)</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.response.remove">
+            function <span class="apidocSignatureSpan">koa.response.</span>remove
+            <span class="apidocSignatureSpan">(field)</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.response.set">
+            function <span class="apidocSignatureSpan">koa.response.</span>set
+            <span class="apidocSignatureSpan">(field, val)</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.response.toJSON">
+            function <span class="apidocSignatureSpan">koa.response.</span>toJSON
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+            
+        </li>
+        
+        <li>
+            
+            <a class="apidocElementLiA" href="#apidoc.element.koa.response.vary">
+            function <span class="apidocSignatureSpan">koa.response.</span>vary
+            <span class="apidocSignatureSpan">(field)</span>
+            </a>
+            
+        </li>
+        
+    </ol></li>
+    
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.koa" id="apidoc.module.koa">module koa</a></h1>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.koa.context" id="apidoc.module.koa.context">module koa.context</a></h1>
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.context.accepts" id="apidoc.element.koa.context.accepts">
+        function <span class="apidocSignatureSpan">koa.context.</span>accepts
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">accepts = function (){
+  return this[target][name].apply(this[target], arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+http requests which delegate to an [IncomingMessage](https://nodejs.org/api/http.html#http_class_http_incomingmessage)
+from the node `http` module.
+
+Here is an example of checking that a requesting client supports xml.
+
+```js
+app.use(async (ctx, next) =&#x3e; {
+  ctx.assert(ctx.request.<span class="apidocCodeKeywordSpan">accepts</span>(&#x27;xml&#x27;), 406);
+  // equivalent to:
+  // if (!ctx.request.accepts(&#x27;xml&#x27;)) ctx.throw(406);
+  await next();
+});
+```
+
+Koa provides a `Response` object as the `response` property of the `Context`.
+...</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.context.acceptsCharsets" id="apidoc.element.koa.context.acceptsCharsets">
+        function <span class="apidocSignatureSpan">koa.context.</span>acceptsCharsets
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">acceptsCharsets = function (){
+  return this[target][name].apply(this[target], arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.context.acceptsEncodings" id="apidoc.element.koa.context.acceptsEncodings">
+        function <span class="apidocSignatureSpan">koa.context.</span>acceptsEncodings
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">acceptsEncodings = function (){
+  return this[target][name].apply(this[target], arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.context.acceptsLanguages" id="apidoc.element.koa.context.acceptsLanguages">
+        function <span class="apidocSignatureSpan">koa.context.</span>acceptsLanguages
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">acceptsLanguages = function (){
+  return this[target][name].apply(this[target], arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.context.append" id="apidoc.element.koa.context.append">
+        function <span class="apidocSignatureSpan">koa.context.</span>append
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">append = function (){
+  return this[target][name].apply(this[target], arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+  /**
+* Append additional header `field` with value `val`.
+*
+* Examples:
+*
+* ```
+* this.<span class="apidocCodeKeywordSpan">append</span>(&#x27;Link&#x27;, [&#x27;&#x3c;http://localhost/&#x3e;&#x27;, &#x27;&#x\
+3c;http://localhost:3000/&#x3e;&#x27;]);
+* this.append(&#x27;Set-Cookie&#x27;, &#x27;foo=bar; Path=/; HttpOnly&#x27;);
+* this.append(&#x27;Warning&#x27;, &#x27;199 Miscellaneous warning&#x27;);
+* ```
+*
+* @param {String} field
+* @param {String|Array} val
+* @api public
+...</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.context.assert" id="apidoc.element.koa.context.assert">
+        function <span class="apidocSignatureSpan">koa.context.</span>assert
+        <span class="apidocSignatureSpan">(value, status, msg, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function assert(value, status, msg, opts) {
+  if (value) return;
+  throw createError(status, msg, opts);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+http requests which delegate to an [IncomingMessage](https://nodejs.org/api/http.html#http_class_http_incomingmessage)
+from the node `http` module.
+
+Here is an example of checking that a requesting client supports xml.
+
+```js
+app.use(async (ctx, next) =&#x3e; {
+  ctx.<span class="apidocCodeKeywordSpan">assert</span>(ctx.request.accepts(&#x27;xml&#x27;), 406);
+  // equivalent to:
+  // if (!ctx.request.accepts(&#x27;xml&#x27;)) ctx.throw(406);
+  await next();
+});
+```
+
+Koa provides a `Response` object as the `response` property of the `Context`.
+...</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.context.attachment" id="apidoc.element.koa.context.attachment">
+        function <span class="apidocSignatureSpan">koa.context.</span>attachment
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">attachment = function (){
+  return this[target][name].apply(this[target], arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.context.flushHeaders" id="apidoc.element.koa.context.flushHeaders">
+        function <span class="apidocSignatureSpan">koa.context.</span>flushHeaders
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">flushHeaders = function (){
+  return this[target][name].apply(this[target], arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    ]);
+  },
+
+  /**
+   * Flush any set headers, and begin the body
+   */
+  flushHeaders() {
+    this.res.<span class="apidocCodeKeywordSpan">flushHeaders</span>();
+  }
+};
+...</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.context.get" id="apidoc.element.koa.context.get">
+        function <span class="apidocSignatureSpan">koa.context.</span>get
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">get = function (){
+  return this[target][name].apply(this[target], arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ *
+ * @return {String} hostname:port
+ * @api public
+ */
+
+get host() {
+  const proxy = this.app.proxy;
+  let host = proxy &#x26;&#x26; this.<span class="apidocCodeKeywordSpan">get</span>(&#x27;X-Forwarded-Host&#x27;);
+  host = host || this.get(&#x27;Host&#x27;);
+  if (!host) return &#x27;&#x27;;
+  return host.split(/\s*,\s*/)[0];
+},
+
+/**
+ * Parse the &#x22;Host&#x22; header field hostname
+...</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.context.inspect" id="apidoc.element.koa.context.inspect">
+        function <span class="apidocSignatureSpan">koa.context.</span>inspect
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">inspect() {
+  return this.toJSON();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+/**
+ * Context prototype.
+ */
+
+const proto = module.exports = {
+
+/**
+ * util.<span class="apidocCodeKeywordSpan">inspect</span>() implementation, which
+ * just returns the JSON output.
+ *
+ * @return {Object}
+ * @api public
+ */
+
+inspect() {
+...</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.context.is" id="apidoc.element.koa.context.is">
+        function <span class="apidocSignatureSpan">koa.context.</span>is
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">is = function (){
+  return this[target][name].apply(this[target], arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* If there is no request body, `null` is returned.
+* If there is no content type, `false` is returned.
+* Otherwise, it returns the first `type` that matches.
+*
+* Examples:
+*
+*     // With Content-Type: text/html; charset=utf-8
+*     this.<span class="apidocCodeKeywordSpan">is</span>(&#x27;html&#x27;); // =&#x3e; &#x27;html&#x27;
+*     this.is(&#x27;text/html&#x27;); // =&#x3e; &#x27;text/html&#x27;
+*     this.is(&#x27;text/*&#x27;, &#x27;application/json&#x27;); // =&#x3e; &#x27;text/html&#x27;
+*
+*     // When Content-Type is application/json
+*     this.is(&#x27;json&#x27;, &#x27;urlencoded&#x27;); // =&#x3e; &#x27;json&#x27;
+*     this.is(&#x27;application/json&#x27;); // =&#x3e; &#x27;application/json&#x27;
+*     this.is(&#x27;html&#x27;, &#x27;application/*&#x27;); // =&#x3e; &#x27;application/json&#x27;
+...</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.context.onerror" id="apidoc.element.koa.context.onerror">
+        function <span class="apidocSignatureSpan">koa.context.</span>onerror
+        <span class="apidocSignatureSpan">(err)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">onerror(err) {
+  // don&#x27;t do anything if there is no error.
+  // this allows you to pass `this.onerror`
+  // to node-style callbacks.
+  if (null == err) return;
+
+  if (!(err instanceof Error)) err = new Error(`non-error thrown: ${err}`);
+
+  let headerSent = false;
+  if (this.headerSent || !this.writable) {
+    headerSent = err.headerSent = true;
+  }
+
+  // delegate
+  this.app.emit(&#x27;error&#x27;, err, this);
+
+  // nothing we can do here other
+  // than delegate to the app-level
+  // handler and log.
+  if (headerSent) {
+    return;
+  }
+
+  const { res } = this;
+
+  // first unset all headers
+  if (typeof res.getHeaderNames === &#x27;function&#x27;) {
+    res.getHeaderNames().forEach(name =&#x3e; res.removeHeader(name));
+  } else {
+    res._headers = {}; // Node &#x3c; 7.7
+  }
+
+  // then set those specified
+  this.set(err.headers);
+
+  // force text/plain
+  this.type = &#x27;text&#x27;;
+
+  // ENOENT support
+  if (&#x27;ENOENT&#x27; == err.code) err.status = 404;
+
+  // default to 500
+  if (&#x27;number&#x27; != typeof err.status || !statuses[err.status]) err.status = 500;
+
+  // respond
+  const code = statuses[err.status];
+  const msg = err.expose ? err.message : code;
+  this.status = err.status;
+  this.length = Buffer.byteLength(msg);
+  this.res.end(msg);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  this.length = val.length;
+  return;
+}
+
+// stream
+if (&#x27;function&#x27; == typeof val.pipe) {
+  onFinish(this.res, destroy.bind(null, val));
+  ensureErrorHandler(val, err =&#x3e; this.ctx.<span class="apidocCodeKeywordSpan">onerror</span>(err));
+
+  // overwriting
+  if (null != original &#x26;&#x26; original != val) this.remove(&#x27;Content-Length&#x27;);
+
+  if (setType) this.type = &#x27;bin&#x27;;
+  return;
+}
+...</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.context.redirect" id="apidoc.element.koa.context.redirect">
+        function <span class="apidocSignatureSpan">koa.context.</span>redirect
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">redirect = function (){
+  return this[target][name].apply(this[target], arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+*
+* The string &#x22;back&#x22; is special-cased
+* to provide Referrer support, when Referrer
+* is not present `alt` or &#x22;/&#x22; is used.
+*
+* Examples:
+*
+*    this.<span class="apidocCodeKeywordSpan">redirect</span>(&#x27;back&#x27;);
+*    this.redirect(&#x27;back&#x27;, &#x27;/index.html&#x27;);
+*    this.redirect(&#x27;/login&#x27;);
+*    this.redirect(&#x27;http://google.com&#x27;);
+*
+* @param {String} url
+* @param {String} [alt]
+* @api public
+...</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.context.remove" id="apidoc.element.koa.context.remove">
+        function <span class="apidocSignatureSpan">koa.context.</span>remove
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">remove = function (){
+  return this[target][name].apply(this[target], arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+this._body = val;
+
+if (this.res.headersSent) return;
+
+// no content
+if (null == val) {
+  if (!statuses.empty[this.status]) this.status = 204;
+  this.<span class="apidocCodeKeywordSpan">remove</span>(&#x27;Content-Type&#x27;);
+  this.remove(&#x27;Content-Length&#x27;);
+  this.remove(&#x27;Transfer-Encoding&#x27;);
+  return;
+}
+
+// set the status
+if (!this._explicitStatus) this.status = 200;
+...</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.context.set" id="apidoc.element.koa.context.set">
+        function <span class="apidocSignatureSpan">koa.context.</span>set
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">set = function (){
+  return this[target][name].apply(this[target], arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+if (typeof res.getHeaderNames === &#x27;function&#x27;) {
+  res.getHeaderNames().forEach(name =&#x3e; res.removeHeader(name));
+} else {
+  res._headers = {}; // Node &#x3c; 7.7
+}
+
+// then set those specified
+this.<span class="apidocCodeKeywordSpan">set</span>(err.headers);
+
+// force text/plain
+this.type = &#x27;text&#x27;;
+
+// ENOENT support
+if (&#x27;ENOENT&#x27; == err.code) err.status = 404;
+...</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.context.throw" id="apidoc.element.koa.context.throw">
+        function <span class="apidocSignatureSpan">koa.context.</span>throw
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">throw() {
+  throw createError.apply(null, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+Here is an example of checking that a requesting client supports xml.
+
+```js
+app.use(async (ctx, next) =&#x3e; {
+  ctx.assert(ctx.request.accepts(&#x27;xml&#x27;), 406);
+  // equivalent to:
+  // if (!ctx.request.accepts(&#x27;xml&#x27;)) ctx.<span class="apidocCodeKeywordSpan">throw</span>(406);
+  await next();
+});
+```
+
+Koa provides a `Response` object as the `response` property of the `Context`.  
+Koa&#x27;s `Response` object provides helpful methods for working with
+http responses which delegate to a [ServerResponse](https://nodejs.org/api/http.html#http_class_http_serverresponse)
+...</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.context.toJSON" id="apidoc.element.koa.context.toJSON">
+        function <span class="apidocSignatureSpan">koa.context.</span>toJSON
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toJSON() {
+  return {
+    request: this.request.toJSON(),
+    response: this.response.toJSON(),
+    app: this.app.toJSON(),
+    originalUrl: this.originalUrl,
+    req: &#x27;&#x3c;original node req&#x3e;&#x27;,
+    res: &#x27;&#x3c;original node res&#x3e;&#x27;,
+    socket: &#x27;&#x3c;original node socket&#x3e;&#x27;
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ * just returns the JSON output.
+ *
+ * @return {Object}
+ * @api public
+ */
+
+inspect() {
+  return this.<span class="apidocCodeKeywordSpan">toJSON</span>();
+},
+
+/**
+ * Return JSON representation.
+ *
+ * Here we explicitly invoke .toJSON() on each
+ * object, as iteration will otherwise fail due
+...</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.context.vary" id="apidoc.element.koa.context.vary">
+        function <span class="apidocSignatureSpan">koa.context.</span>vary
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">vary = function (){
+  return this[target][name].apply(this[target], arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+    
+    
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.koa.request" id="apidoc.module.koa.request">module koa.request</a></h1>
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.request.accepts" id="apidoc.element.koa.request.accepts">
+        function <span class="apidocSignatureSpan">koa.request.</span>accepts
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">accepts() {
+  return this.accept.types.apply(this.accept, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+http requests which delegate to an [IncomingMessage](https://nodejs.org/api/http.html#http_class_http_incomingmessage)
+from the node `http` module.
+
+Here is an example of checking that a requesting client supports xml.
+
+```js
+app.use(async (ctx, next) =&#x3e; {
+  ctx.assert(ctx.request.<span class="apidocCodeKeywordSpan">accepts</span>(&#x27;xml&#x27;), 406);
+  // equivalent to:
+  // if (!ctx.request.accepts(&#x27;xml&#x27;)) ctx.throw(406);
+  await next();
+});
+```
+
+Koa provides a `Response` object as the `response` property of the `Context`.
+...</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.request.acceptsCharsets" id="apidoc.element.koa.request.acceptsCharsets">
+        function <span class="apidocSignatureSpan">koa.request.</span>acceptsCharsets
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">acceptsCharsets() {
+  return this.accept.charsets.apply(this.accept, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.request.acceptsEncodings" id="apidoc.element.koa.request.acceptsEncodings">
+        function <span class="apidocSignatureSpan">koa.request.</span>acceptsEncodings
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">acceptsEncodings() {
+  return this.accept.encodings.apply(this.accept, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.request.acceptsLanguages" id="apidoc.element.koa.request.acceptsLanguages">
+        function <span class="apidocSignatureSpan">koa.request.</span>acceptsLanguages
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">acceptsLanguages() {
+  return this.accept.languages.apply(this.accept, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.request.get" id="apidoc.element.koa.request.get">
+        function <span class="apidocSignatureSpan">koa.request.</span>get
+        <span class="apidocSignatureSpan">(field)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">get(field) {
+  const req = this.req;
+  switch (field = field.toLowerCase()) {
+    case &#x27;referer&#x27;:
+    case &#x27;referrer&#x27;:
+      return req.headers.referrer || req.headers.referer || &#x27;&#x27;;
+    default:
+      return req.headers[field] || &#x27;&#x27;;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ *
+ * @return {String} hostname:port
+ * @api public
+ */
+
+get host() {
+  const proxy = this.app.proxy;
+  let host = proxy &#x26;&#x26; this.<span class="apidocCodeKeywordSpan">get</span>(&#x27;X-Forwarded-Host&#x27;);
+  host = host || this.get(&#x27;Host&#x27;);
+  if (!host) return &#x27;&#x27;;
+  return host.split(/\s*,\s*/)[0];
+},
+
+/**
+ * Parse the &#x22;Host&#x22; header field hostname
+...</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.request.inspect" id="apidoc.element.koa.request.inspect">
+        function <span class="apidocSignatureSpan">koa.request.</span>inspect
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">inspect() {
+  if (!this.req) return;
+  return this.toJSON();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+/**
+ * Context prototype.
+ */
+
+const proto = module.exports = {
+
+/**
+ * util.<span class="apidocCodeKeywordSpan">inspect</span>() implementation, which
+ * just returns the JSON output.
+ *
+ * @return {Object}
+ * @api public
+ */
+
+inspect() {
+...</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.request.is" id="apidoc.element.koa.request.is">
+        function <span class="apidocSignatureSpan">koa.request.</span>is
+        <span class="apidocSignatureSpan">(types)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">is(types) {
+  if (!types) return typeis(this.req);
+  if (!Array.isArray(types)) types = [].slice.call(arguments);
+  return typeis(this.req, types);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* If there is no request body, `null` is returned.
+* If there is no content type, `false` is returned.
+* Otherwise, it returns the first `type` that matches.
+*
+* Examples:
+*
+*     // With Content-Type: text/html; charset=utf-8
+*     this.<span class="apidocCodeKeywordSpan">is</span>(&#x27;html&#x27;); // =&#x3e; &#x27;html&#x27;
+*     this.is(&#x27;text/html&#x27;); // =&#x3e; &#x27;text/html&#x27;
+*     this.is(&#x27;text/*&#x27;, &#x27;application/json&#x27;); // =&#x3e; &#x27;text/html&#x27;
+*
+*     // When Content-Type is application/json
+*     this.is(&#x27;json&#x27;, &#x27;urlencoded&#x27;); // =&#x3e; &#x27;json&#x27;
+*     this.is(&#x27;application/json&#x27;); // =&#x3e; &#x27;application/json&#x27;
+*     this.is(&#x27;html&#x27;, &#x27;application/*&#x27;); // =&#x3e; &#x27;application/json&#x27;
+...</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.request.toJSON" id="apidoc.element.koa.request.toJSON">
+        function <span class="apidocSignatureSpan">koa.request.</span>toJSON
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toJSON() {
+  return only(this, [
+    &#x27;method&#x27;,
+    &#x27;url&#x27;,
+    &#x27;header&#x27;
+  ]);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ * just returns the JSON output.
+ *
+ * @return {Object}
+ * @api public
+ */
+
+inspect() {
+  return this.<span class="apidocCodeKeywordSpan">toJSON</span>();
+},
+
+/**
+ * Return JSON representation.
+ *
+ * Here we explicitly invoke .toJSON() on each
+ * object, as iteration will otherwise fail due
+...</pre></li>
+    </ul>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.koa.response" id="apidoc.module.koa.response">module koa.response</a></h1>
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.response.append" id="apidoc.element.koa.response.append">
+        function <span class="apidocSignatureSpan">koa.response.</span>append
+        <span class="apidocSignatureSpan">(field, val)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">append(field, val) {
+  const prev = this.get(field);
+
+  if (prev) {
+    val = Array.isArray(prev)
+      ? prev.concat(val)
+      : [prev].concat(val);
+  }
+
+  return this.set(field, val);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+  /**
+* Append additional header `field` with value `val`.
+*
+* Examples:
+*
+* ```
+* this.<span class="apidocCodeKeywordSpan">append</span>(&#x27;Link&#x27;, [&#x27;&#x3c;http://localhost/&#x3e;&#x27;, &#x27;&#x\
+3c;http://localhost:3000/&#x3e;&#x27;]);
+* this.append(&#x27;Set-Cookie&#x27;, &#x27;foo=bar; Path=/; HttpOnly&#x27;);
+* this.append(&#x27;Warning&#x27;, &#x27;199 Miscellaneous warning&#x27;);
+* ```
+*
+* @param {String} field
+* @param {String|Array} val
+* @api public
+...</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.response.attachment" id="apidoc.element.koa.response.attachment">
+        function <span class="apidocSignatureSpan">koa.response.</span>attachment
+        <span class="apidocSignatureSpan">(filename)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">attachment(filename) {
+  if (filename) this.type = extname(filename);
+  this.set(&#x27;Content-Disposition&#x27;, contentDisposition(filename));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.response.flushHeaders" id="apidoc.element.koa.response.flushHeaders">
+        function <span class="apidocSignatureSpan">koa.response.</span>flushHeaders
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">flushHeaders() {
+  this.res.flushHeaders();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    ]);
+  },
+
+  /**
+   * Flush any set headers, and begin the body
+   */
+  flushHeaders() {
+    this.res.<span class="apidocCodeKeywordSpan">flushHeaders</span>();
+  }
+};
+...</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.response.get" id="apidoc.element.koa.response.get">
+        function <span class="apidocSignatureSpan">koa.response.</span>get
+        <span class="apidocSignatureSpan">(field)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">get(field) {
+  return this.header[field.toLowerCase()] || &#x27;&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ *
+ * @return {String} hostname:port
+ * @api public
+ */
+
+get host() {
+  const proxy = this.app.proxy;
+  let host = proxy &#x26;&#x26; this.<span class="apidocCodeKeywordSpan">get</span>(&#x27;X-Forwarded-Host&#x27;);
+  host = host || this.get(&#x27;Host&#x27;);
+  if (!host) return &#x27;&#x27;;
+  return host.split(/\s*,\s*/)[0];
+},
+
+/**
+ * Parse the &#x22;Host&#x22; header field hostname
+...</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.response.inspect" id="apidoc.element.koa.response.inspect">
+        function <span class="apidocSignatureSpan">koa.response.</span>inspect
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">inspect() {
+  if (!this.res) return;
+  const o = this.toJSON();
+  o.body = this.body;
+  return o;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+/**
+ * Context prototype.
+ */
+
+const proto = module.exports = {
+
+/**
+ * util.<span class="apidocCodeKeywordSpan">inspect</span>() implementation, which
+ * just returns the JSON output.
+ *
+ * @return {Object}
+ * @api public
+ */
+
+inspect() {
+...</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.response.is" id="apidoc.element.koa.response.is">
+        function <span class="apidocSignatureSpan">koa.response.</span>is
+        <span class="apidocSignatureSpan">(types)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">is(types) {
+  const type = this.type;
+  if (!types) return type || false;
+  if (!Array.isArray(types)) types = [].slice.call(arguments);
+  return typeis(type, types);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* If there is no request body, `null` is returned.
+* If there is no content type, `false` is returned.
+* Otherwise, it returns the first `type` that matches.
+*
+* Examples:
+*
+*     // With Content-Type: text/html; charset=utf-8
+*     this.<span class="apidocCodeKeywordSpan">is</span>(&#x27;html&#x27;); // =&#x3e; &#x27;html&#x27;
+*     this.is(&#x27;text/html&#x27;); // =&#x3e; &#x27;text/html&#x27;
+*     this.is(&#x27;text/*&#x27;, &#x27;application/json&#x27;); // =&#x3e; &#x27;text/html&#x27;
+*
+*     // When Content-Type is application/json
+*     this.is(&#x27;json&#x27;, &#x27;urlencoded&#x27;); // =&#x3e; &#x27;json&#x27;
+*     this.is(&#x27;application/json&#x27;); // =&#x3e; &#x27;application/json&#x27;
+*     this.is(&#x27;html&#x27;, &#x27;application/*&#x27;); // =&#x3e; &#x27;application/json&#x27;
+...</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.response.redirect" id="apidoc.element.koa.response.redirect">
+        function <span class="apidocSignatureSpan">koa.response.</span>redirect
+        <span class="apidocSignatureSpan">(url, alt)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">redirect(url, alt) {
+  // location
+  if (&#x27;back&#x27; == url) url = this.ctx.get(&#x27;Referrer&#x27;) || alt || &#x27;/&#x27;;
+  this.set(&#x27;Location&#x27;, url);
+
+  // status
+  if (!statuses.redirect[this.status]) this.status = 302;
+
+  // html
+  if (this.ctx.accepts(&#x27;html&#x27;)) {
+    url = escape(url);
+    this.type = &#x27;text/html; charset=utf-8&#x27;;
+    this.body = `Redirecting to &#x3c;a href=&#x22;${url}&#x22;&#x3e;${url}&#x3c;/a&#x3e;.`;
+    return;
+  }
+
+  // text
+  this.type = &#x27;text/plain; charset=utf-8&#x27;;
+  this.body = `Redirecting to ${url}.`;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+*
+* The string &#x22;back&#x22; is special-cased
+* to provide Referrer support, when Referrer
+* is not present `alt` or &#x22;/&#x22; is used.
+*
+* Examples:
+*
+*    this.<span class="apidocCodeKeywordSpan">redirect</span>(&#x27;back&#x27;);
+*    this.redirect(&#x27;back&#x27;, &#x27;/index.html&#x27;);
+*    this.redirect(&#x27;/login&#x27;);
+*    this.redirect(&#x27;http://google.com&#x27;);
+*
+* @param {String} url
+* @param {String} [alt]
+* @api public
+...</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.response.remove" id="apidoc.element.koa.response.remove">
+        function <span class="apidocSignatureSpan">koa.response.</span>remove
+        <span class="apidocSignatureSpan">(field)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">remove(field) {
+  this.res.removeHeader(field);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+this._body = val;
+
+if (this.res.headersSent) return;
+
+// no content
+if (null == val) {
+  if (!statuses.empty[this.status]) this.status = 204;
+  this.<span class="apidocCodeKeywordSpan">remove</span>(&#x27;Content-Type&#x27;);
+  this.remove(&#x27;Content-Length&#x27;);
+  this.remove(&#x27;Transfer-Encoding&#x27;);
+  return;
+}
+
+// set the status
+if (!this._explicitStatus) this.status = 200;
+...</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.response.set" id="apidoc.element.koa.response.set">
+        function <span class="apidocSignatureSpan">koa.response.</span>set
+        <span class="apidocSignatureSpan">(field, val)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">set(field, val) {
+  if (2 == arguments.length) {
+    if (Array.isArray(val)) val = val.map(String);
+    else val = String(val);
+    this.res.setHeader(field, val);
+  } else {
+    for (const key in field) {
+      this.set(key, field[key]);
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+if (typeof res.getHeaderNames === &#x27;function&#x27;) {
+  res.getHeaderNames().forEach(name =&#x3e; res.removeHeader(name));
+} else {
+  res._headers = {}; // Node &#x3c; 7.7
+}
+
+// then set those specified
+this.<span class="apidocCodeKeywordSpan">set</span>(err.headers);
+
+// force text/plain
+this.type = &#x27;text&#x27;;
+
+// ENOENT support
+if (&#x27;ENOENT&#x27; == err.code) err.status = 404;
+...</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.response.toJSON" id="apidoc.element.koa.response.toJSON">
+        function <span class="apidocSignatureSpan">koa.response.</span>toJSON
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toJSON() {
+  return only(this, [
+    &#x27;status&#x27;,
+    &#x27;message&#x27;,
+    &#x27;header&#x27;
+  ]);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ * just returns the JSON output.
+ *
+ * @return {Object}
+ * @api public
+ */
+
+inspect() {
+  return this.<span class="apidocCodeKeywordSpan">toJSON</span>();
+},
+
+/**
+ * Return JSON representation.
+ *
+ * Here we explicitly invoke .toJSON() on each
+ * object, as iteration will otherwise fail due
+...</pre></li>
+    </ul>
+    
+    
+    
+    <h2>
+        <a href="#apidoc.element.koa.response.vary" id="apidoc.element.koa.response.vary">
+        function <span class="apidocSignatureSpan">koa.response.</span>vary
+        <span class="apidocSignatureSpan">(field)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">vary(field) {
+  vary(this.res, field);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+    
+    
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
