@@ -63,6 +63,24 @@
 
         <li>
 
+            <a class="apidocElementLiA" href="#apidoc.element.koa.koa">
+            function <span class="apidocSignatureSpan"></span>koa
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.koa.toString">
+            function <span class="apidocSignatureSpan">koa.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">koa.</span>context</span>
 
         </li>
@@ -450,10 +468,206 @@
 
     </ol></li>
 
+    <li class="apidocModuleLi"><a href="#apidoc.module.koa.toString">module koa.toString</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.koa.toString.toString">
+            function <span class="apidocSignatureSpan">koa.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
 </ol></div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.koa" id="apidoc.module.koa">module koa</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.koa.koa" id="apidoc.element.koa.koa">
+        function <span class="apidocSignatureSpan"></span>koa
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">class Application extends Emitter {
+<span class="apidocCodeCommentSpan">  /**
+   * Initialize a new `Application`.
+   *
+   * @api public
+   */
+</span>
+  constructor() {
+    super();
+
+    this.proxy = false;
+    this.middleware = [];
+    this.subdomainOffset = 2;
+    this.env = process.env.NODE_ENV || &#x27;development&#x27;;
+    this.context = Object.create(context);
+    this.request = Object.create(request);
+    this.response = Object.create(response);
+  }
+
+  /**
+   * Shorthand for:
+   *
+   *    http.createServer(app.callback()).listen(...)
+   *
+   * @param {Mixed} ...
+   * @return {Server}
+   * @api public
+   */
+
+  listen() {
+    debug(&#x27;listen&#x27;);
+    const server = http.createServer(this.callback());
+    return server.listen.apply(server, arguments);
+  }
+
+  /**
+   * Return JSON representation.
+   * We only bother showing settings.
+   *
+   * @return {Object}
+   * @api public
+   */
+
+  toJSON() {
+    return only(this, [
+      &#x27;subdomainOffset&#x27;,
+      &#x27;proxy&#x27;,
+      &#x27;env&#x27;
+    ]);
+  }
+
+  /**
+   * Inspect implementation.
+   *
+   * @return {Object}
+   * @api public
+   */
+
+  inspect() {
+    return this.toJSON();
+  }
+
+  /**
+   * Use the given middleware `fn`.
+   *
+   * Old-style middleware will be converted.
+   *
+   * @param {Function} fn
+   * @return {Application} self
+   * @api public
+   */
+
+  use(fn) {
+    if (typeof fn !== &#x27;function&#x27;) throw new TypeError(&#x27;middleware must be a function!&#x27;);
+    if (isGeneratorFunction(fn)) {
+      deprecate(&#x27;Support for generators will be removed in v3. &#x27; +
+                &#x27;See the documentation for examples of how to convert old middleware &#x27; +
+                &#x27;https://github.com/koajs/koa/blob/master/docs/migration.md&#x27;);
+      fn = convert(fn);
+    }
+    debug(&#x27;use %s&#x27;, fn._name || fn.name || &#x27;-&#x27;);
+    this.middleware.push(fn);
+    return this;
+  }
+
+  /**
+   * Return a request handler callback
+   * for node&#x27;s native http server.
+   *
+   * @return {Function}
+   * @api public
+   */
+
+  callback() {
+    const fn = compose(this.middleware);
+
+    if (!this.listeners(&#x27;error&#x27;).length) this.on(&#x27;error&#x27;, this.onerror);
+
+    const handleRequest = (req, res) =&#x3e; {
+      res.statusCode = 404;
+      const ctx = this.createContext(req, res);
+      const onerror = err =&#x3e; ctx.onerror(err);
+      const handleResponse = () =&#x3e; respond(ctx);
+      onFinished(res, onerror);
+      return fn(ctx).then(handleResponse).catch(onerror);
+    };
+
+    return handleRequest;
+  }
+
+  /**
+   * Initialize a new context.
+   *
+   * @api private
+   */
+
+  createContext(req, res) {
+    const context = Object.create(this.context);
+    const request = context.request = Object.create(this.request);
+    const response = context.response = Object.create(this.response);
+    context.app = request.app = response.app = this;
+    context.req = request.req = response.req = req;
+    context.res = request.res = response.res = res;
+    request.ctx = response.ctx = context;
+    request.response = response;
+    response.request = request;
+    context.originalUrl = request.originalUrl = req.url;
+    context.cookies = new Cookies(req, res, {
+      keys: this.keys,
+      secure: request.secure
+    });
+    request.ip = request.ips[0] || req.socket.remoteAddress || &#x27;&#x27;;
+    context.accept = request.accept = accepts(req);
+    context.state = {};
+    return context;
+  }
+
+  /**
+   * Default error handler.
+   *
+   * @param {Error} err
+   * @api private
+   */
+
+  onerror(err) {
+    assert(err instanceof Error, `non-error thrown: ${err}`);
+
+    if (404 == err.status || err.expose) return;
+    if (this.silent) return;
+
+    const msg = err.stack || err.toString();
+    console.error();
+    console.error(msg.replace(/^/gm, &#x27;  &#x27;));
+    console.error();
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.koa.toString" id="apidoc.element.koa.toString">
+        function <span class="apidocSignatureSpan">koa.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return text;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
 
 
 
@@ -1572,6 +1786,24 @@ inspect() {
     <li>description and source-code<pre class="apidocCodePre">vary(field) {
   vary(this.res, field);
 }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.koa.toString" id="apidoc.module.koa.toString">module koa.toString</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.koa.toString.toString" id="apidoc.element.koa.toString.toString">
+        function <span class="apidocSignatureSpan">koa.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
