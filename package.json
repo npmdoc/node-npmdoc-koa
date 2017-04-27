@@ -1,6 +1,6 @@
 {
     "author": "kai zhu <kaizhu256@gmail.com>",
-    "description": "#### api documentation for  [koa (v2.2.0)](https://github.com/koajs/koa#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-koa.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-koa) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-koa.svg)](https://travis-ci.org/npmdoc/node-npmdoc-koa)",
+    "description": "#### basic api documentation for  [koa (v2.2.0)](https://github.com/koajs/koa#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-koa.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-koa) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-koa.svg)](https://travis-ci.org/npmdoc/node-npmdoc-koa)",
     "devDependencies": {
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
         "koa": "*",
@@ -35,5 +35,5 @@
         "start": "PORT=${PORT:-8080} utility2 start test.js",
         "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
-    "version": "0.0.5"
+    "version": "2017.4.27"
 }

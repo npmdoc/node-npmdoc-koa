@@ -1,6 +1,6 @@
 # npmdoc-koa
 
-#### api documentation for  [koa (v2.2.0)](https://github.com/koajs/koa#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-koa.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-koa) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-koa.svg)](https://travis-ci.org/npmdoc/node-npmdoc-koa)
+#### basic api documentation for  [koa (v2.2.0)](https://github.com/koajs/koa#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-koa.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-koa) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-koa.svg)](https://travis-ci.org/npmdoc/node-npmdoc-koa)
 
 #### Koa web app framework
 
@@ -366,7 +366,8 @@
     "scripts": {
         "test": "make test"
     },
-    "version": "2.2.0"
+    "version": "2.2.0",
+    "bin": {}
 }
 ```
 
