@@ -724,22 +724,20 @@ Koa provides a `Response` object as the `response` property of the `Context`.
   return this[target][name].apply(this[target], arguments);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
+* drop support for node.js `&gt;= 0.11.0 &lt; 0.11.16`
+* use `Object.setPrototypeOf()` instead of `__proto__`
+* update dependencies
 
-  /**
-* Append additional header `field` with value `val`.
-*
-* Examples:
-*
-* ```
-* this.<span class="apidocCodeKeywordSpan">append</span>('Link', ['&lt;http://localhost/&gt;', '&lt;
-;http://localhost:3000/&gt;']);
-* this.append('Set-Cookie', 'foo=bar; Path=/; HttpOnly');
-* this.append('Warning', '199 Miscellaneous warning');
-* ```
-*
-* @param {String} field
-* @param {String|Array} val
-* @api public
+0.16.0 / 2015-01-27
+==================
+
+* add `res.<span class="apidocCodeKeywordSpan">append</span>()`
+* fix path usage for node@0.11.15
+
+0.15.0 / 2015-01-18
+==================
+
+* add `this.href`
 ...</pre></li>
     </ul>
 
@@ -757,21 +755,21 @@ Koa provides a `Response` object as the `response` property of the `Context`.
   throw createError(status, msg, opts);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-http requests which delegate to an [IncomingMessage](https://nodejs.org/api/http.html#http_class_http_incomingmessage)
-from the node `http` module.
 
-Here is an example of checking that a requesting client supports xml.
+* bump content-disposition
+* bump statuses
 
-```js
-app.use(async (ctx, next) =&gt; {
-  ctx.<span class="apidocCodeKeywordSpan">assert</span>(ctx.request.accepts('xml'), 406);
-  // equivalent to:
-  // if (!ctx.request.accepts('xml')) ctx.throw(406);
-  await next();
-});
-```
+0.12.0 / 2014-09-20
+==================
 
-Koa provides a `Response` object as the `response` property of the `Context`.
+* add this.<span class="apidocCodeKeywordSpan">assert</span>()
+* use content-disposition
+
+0.11.0 / 2014-09-08
+==================
+
+* fix app.use() assertion #337
+* bump a lot of dependencies
 ...</pre></li>
     </ul>
 
@@ -803,16 +801,21 @@ Koa provides a `Response` object as the `response` property of the `Context`.
   return this[target][name].apply(this[target], arguments);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    ]);
-  },
 
-  /**
-   * Flush any set headers, and begin the body
-   */
-  flushHeaders() {
-    this.res.<span class="apidocCodeKeywordSpan">flushHeaders</span>();
-  }
-};
+2.0.0 / ??????????
+==================
+
+* Fix malformed content-type header causing exception on charset get (#898)
+* fix: subdomains should be [] if the host is an ip (#808)
+* don't pre-bound onerror [breaking change] (#800)
+* fix `ctx.<span class="apidocCodeKeywordSpan">flushHeaders</span>()` to use `res.flushHeaders()` instead of `res.writeHead()` (#
+795)
+* fix(response): correct response.writable logic (#782)
+* merge v1.1.2 and v1.2.0 changes
+* include `koa-convert` so that generator functions still work
+  * NOTE: generator functions are deprecated in v2 and will be removed in v3
+* improve linting
+* improve docs
 ...</pre></li>
     </ul>
 
@@ -829,21 +832,21 @@ Koa provides a `Response` object as the `response` property of the `Context`.
   return this[target][name].apply(this[target], arguments);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
- *
- * @return {String} hostname:port
- * @api public
- */
 
-get host() {
-  const proxy = this.app.proxy;
-  let host = proxy &amp;&amp; this.<span class="apidocCodeKeywordSpan">get</span>('X-Forwarded-Host');
-  host = host || this.get('Host');
-  if (!host) return '';
-  return host.split(/\s*,\s*/)[0];
-},
+ * empty `request.query` objects are now always the same instance
+ * bump `fresh@0.3.0`
 
-/**
- * Parse the "Host" header field hostname
+0.20.0 / 2015-04-30
+==================
+
+Breaking change if you're using `this.<span class="apidocCodeKeywordSpan">get</span>('ua') === undefined` etc.
+For more details please checkout [#438](https://github.com/koajs/koa/pull/438).
+
+  * make sure helpers return strict string
+  * feat: alias response.headers to response.header
+
+0.19.1 / 2015-04-14
+==================
 ...</pre></li>
     </ul>
 
@@ -860,21 +863,20 @@ get host() {
   return this.toJSON();
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-/**
- * Context prototype.
- */
+* test against the latest version of node
+* add a lot of docs
 
-const proto = module.exports = {
+1.1.2 / 2015-11-05
+==================
 
-/**
- * util.<span class="apidocCodeKeywordSpan">inspect</span>() implementation, which
- * just returns the JSON output.
- *
- * @return {Object}
- * @api public
- */
+* ensure parseurl always working as expected
+* fix Application.<span class="apidocCodeKeywordSpan">inspect</span>() â€“ missing .proxy value.
 
-inspect() {
+2.0.0-alpha.3 / 2015-11-05
+==================
+
+* ensure parseurl always working as expected. #586
+* fix Application.inspect() â€“ missing .proxy value. Closes #563
 ...</pre></li>
     </ul>
 
@@ -891,21 +893,21 @@ inspect() {
   return this[target][name].apply(this[target], arguments);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-* If there is no request body, `null` is returned.
-* If there is no content type, `false` is returned.
-* Otherwise, it returns the first `type` that matches.
-*
-* Examples:
-*
-*     // With Content-Type: text/html; charset=utf-8
-*     this.<span class="apidocCodeKeywordSpan">is</span>('html'); // =&gt; 'html'
-*     this.is('text/html'); // =&gt; 'text/html'
-*     this.is('text/*', 'application/json'); // =&gt; 'text/html'
-*
-*     // When Content-Type is application/json
-*     this.is('json', 'urlencoded'); // =&gt; 'json'
-*     this.is('application/json'); // =&gt; 'application/json'
-*     this.is('html', 'application/*'); // =&gt; 'application/json'
+==================
+
+* bump type-is
+
+0.8.0 / 2014-06-13
+==================
+
+* add `this.response.<span class="apidocCodeKeywordSpan">is</span>()``
+* remove `.status=string` and `res.statusString` #298
+
+0.7.0 / 2014-06-07
+==================
+
+* add `this.lastModified` and `this.etag` as both getters and setters for ubiquity #292.
+  See koajs/koa@4065bf7 for an explanation.
 ...</pre></li>
     </ul>
 
@@ -970,21 +972,21 @@ inspect() {
   this.res.end(msg);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  this.length = val.length;
-  return;
-}
+==================
 
-// stream
-if ('function' == typeof val.pipe) {
-  onFinish(this.res, destroy.bind(null, val));
-  ensureErrorHandler(val, err =&gt; this.ctx.<span class="apidocCodeKeywordSpan">onerror</span>(err));
+ * fix `response.writeable` during pipelined requests
 
-  // overwriting
-  if (null != original &amp;&amp; original != val) this.remove('Content-Length');
+1.2.0 / 2016-03-03
+==================
 
-  if (setType) this.type = 'bin';
-  return;
-}
+* add support for `err.headers` in `ctx.<span class="apidocCodeKeywordSpan">onerror</span>()`
+  - see: https://github.com/koajs/koa/pull/668
+  - note: you should set these headers in your custom error handlers as well
+  - docs: https://github.com/koajs/koa/blob/master/docs/error-handling.md
+* fix `cookies`' detection of http/https
+  - see: https://github.com/koajs/koa/pull/614
+* deprecate `app.experimental = true`. Koa v2 does not use this signature.
+* add a code of conduct
 ...</pre></li>
     </ul>
 
@@ -1094,20 +1096,20 @@ if ('ENOENT' == err.code) err.status = 404;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
-Here is an example of checking that a requesting client supports xml.
+* fix app.use() assertion #337
+* bump a lot of dependencies
 
-```js
-app.use(async (ctx, next) =&gt; {
-  ctx.assert(ctx.request.accepts('xml'), 406);
-  // equivalent to:
-  // if (!ctx.request.accepts('xml')) ctx.<span class="apidocCodeKeywordSpan">throw</span>(406);
-  await next();
-});
-```
+0.10.0 / 2014-08-12
+==================
 
-Koa provides a `Response` object as the `response` property of the `Context`.
-Koa's `Response` object provides helpful methods for working with
-http responses which delegate to a [ServerResponse](https://nodejs.org/api/http.html#http_class_http_serverresponse)
+* add `ctx.<span class="apidocCodeKeywordSpan">throw</span>(err, object)` support
+* add `ctx.throw(err, status, object)` support
+
+0.9.0 / 2014-08-07
+==================
+
+* add: do not set `err.expose` to true when err.status not a valid http status code
+* add: alias `request.headers` as `request.header`
 ...</pre></li>
     </ul>
 
@@ -1132,21 +1134,21 @@ http responses which delegate to a [ServerResponse](https://nodejs.org/api/http.
   };
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
- * just returns the JSON output.
- *
- * @return {Object}
- * @api public
- */
 
-inspect() {
-  return this.<span class="apidocCodeKeywordSpan">toJSON</span>();
-},
+ * change res.type= to always default charset. Closes #252
+ * remove ctx.inspect() implementation. Closes #164
 
-/**
- * Return JSON representation.
- *
- * Here we explicitly invoke .toJSON() on each
- * object, as iteration will otherwise fail due
+0.5.2 / 2014-03-23
+==================
+
+ * fix: inspection of `app` and `app.<span class="apidocCodeKeywordSpan">toJSON</span>()`
+ * fix: let `this.throw`n errors provide their own status
+ * fix: overwriting of `content-type` w/ `HEAD` requests
+ * refactor: use statuses
+ * refactor: use escape-html
+ * bump dev deps
+
+0.5.1 / 2014-03-06
 ...</pre></li>
     </ul>
 
@@ -1162,7 +1164,23 @@ inspect() {
     <li>description and source-code<pre class="apidocCodePre">vary = function (){
   return this[target][name].apply(this[target], arguments);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* remove `.status=string` and `res.statusString` #298
+
+0.7.0 / 2014-06-07
+==================
+
+* add `this.lastModified` and `this.etag` as both getters and setters for ubiquity #292.
+  See koajs/koa@4065bf7 for an explanation.
+* refactor `this.response.<span class="apidocCodeKeywordSpan">vary</span>()` to use [vary](https://github.com/expressjs/vary) #291
+* remove `this.response.append()` #291
+
+0.6.3 / 2014-06-06
+==================
+
+* fix res.type= when the extension is unknown
+* assert when non-error is passed to app.onerror #287
+...</pre></li>
     </ul>
 
 
@@ -1266,21 +1284,21 @@ Koa provides a `Response` object as the `response` property of the `Context`.
   }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
- *
- * @return {String} hostname:port
- * @api public
- */
 
-get host() {
-  const proxy = this.app.proxy;
-  let host = proxy &amp;&amp; this.<span class="apidocCodeKeywordSpan">get</span>('X-Forwarded-Host');
-  host = host || this.get('Host');
-  if (!host) return '';
-  return host.split(/\s*,\s*/)[0];
-},
+ * empty `request.query` objects are now always the same instance
+ * bump `fresh@0.3.0`
 
-/**
- * Parse the "Host" header field hostname
+0.20.0 / 2015-04-30
+==================
+
+Breaking change if you're using `this.<span class="apidocCodeKeywordSpan">get</span>('ua') === undefined` etc.
+For more details please checkout [#438](https://github.com/koajs/koa/pull/438).
+
+  * make sure helpers return strict string
+  * feat: alias response.headers to response.header
+
+0.19.1 / 2015-04-14
+==================
 ...</pre></li>
     </ul>
 
@@ -1298,21 +1316,20 @@ get host() {
   return this.toJSON();
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-/**
- * Context prototype.
- */
+* test against the latest version of node
+* add a lot of docs
 
-const proto = module.exports = {
+1.1.2 / 2015-11-05
+==================
 
-/**
- * util.<span class="apidocCodeKeywordSpan">inspect</span>() implementation, which
- * just returns the JSON output.
- *
- * @return {Object}
- * @api public
- */
+* ensure parseurl always working as expected
+* fix Application.<span class="apidocCodeKeywordSpan">inspect</span>() â€“ missing .proxy value.
 
-inspect() {
+2.0.0-alpha.3 / 2015-11-05
+==================
+
+* ensure parseurl always working as expected. #586
+* fix Application.inspect() â€“ missing .proxy value. Closes #563
 ...</pre></li>
     </ul>
 
@@ -1331,21 +1348,21 @@ inspect() {
   return typeis(this.req, types);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-* If there is no request body, `null` is returned.
-* If there is no content type, `false` is returned.
-* Otherwise, it returns the first `type` that matches.
-*
-* Examples:
-*
-*     // With Content-Type: text/html; charset=utf-8
-*     this.<span class="apidocCodeKeywordSpan">is</span>('html'); // =&gt; 'html'
-*     this.is('text/html'); // =&gt; 'text/html'
-*     this.is('text/*', 'application/json'); // =&gt; 'text/html'
-*
-*     // When Content-Type is application/json
-*     this.is('json', 'urlencoded'); // =&gt; 'json'
-*     this.is('application/json'); // =&gt; 'application/json'
-*     this.is('html', 'application/*'); // =&gt; 'application/json'
+==================
+
+* bump type-is
+
+0.8.0 / 2014-06-13
+==================
+
+* add `this.response.<span class="apidocCodeKeywordSpan">is</span>()``
+* remove `.status=string` and `res.statusString` #298
+
+0.7.0 / 2014-06-07
+==================
+
+* add `this.lastModified` and `this.etag` as both getters and setters for ubiquity #292.
+  See koajs/koa@4065bf7 for an explanation.
 ...</pre></li>
     </ul>
 
@@ -1366,21 +1383,21 @@ inspect() {
   ]);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
- * just returns the JSON output.
- *
- * @return {Object}
- * @api public
- */
 
-inspect() {
-  return this.<span class="apidocCodeKeywordSpan">toJSON</span>();
-},
+ * change res.type= to always default charset. Closes #252
+ * remove ctx.inspect() implementation. Closes #164
 
-/**
- * Return JSON representation.
- *
- * Here we explicitly invoke .toJSON() on each
- * object, as iteration will otherwise fail due
+0.5.2 / 2014-03-23
+==================
+
+ * fix: inspection of `app` and `app.<span class="apidocCodeKeywordSpan">toJSON</span>()`
+ * fix: let `this.throw`n errors provide their own status
+ * fix: overwriting of `content-type` w/ `HEAD` requests
+ * refactor: use statuses
+ * refactor: use escape-html
+ * bump dev deps
+
+0.5.1 / 2014-03-06
 ...</pre></li>
     </ul>
 
@@ -1418,22 +1435,20 @@ inspect() {
   return this.set(field, val);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
+* drop support for node.js `&gt;= 0.11.0 &lt; 0.11.16`
+* use `Object.setPrototypeOf()` instead of `__proto__`
+* update dependencies
 
-  /**
-* Append additional header `field` with value `val`.
-*
-* Examples:
-*
-* ```
-* this.<span class="apidocCodeKeywordSpan">append</span>('Link', ['&lt;http://localhost/&gt;', '&lt;
-;http://localhost:3000/&gt;']);
-* this.append('Set-Cookie', 'foo=bar; Path=/; HttpOnly');
-* this.append('Warning', '199 Miscellaneous warning');
-* ```
-*
-* @param {String} field
-* @param {String|Array} val
-* @api public
+0.16.0 / 2015-01-27
+==================
+
+* add `res.<span class="apidocCodeKeywordSpan">append</span>()`
+* fix path usage for node@0.11.15
+
+0.15.0 / 2015-01-18
+==================
+
+* add `this.href`
 ...</pre></li>
     </ul>
 
@@ -1466,16 +1481,21 @@ inspect() {
   this.res.flushHeaders();
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    ]);
-  },
 
-  /**
-   * Flush any set headers, and begin the body
-   */
-  flushHeaders() {
-    this.res.<span class="apidocCodeKeywordSpan">flushHeaders</span>();
-  }
-};
+2.0.0 / ??????????
+==================
+
+* Fix malformed content-type header causing exception on charset get (#898)
+* fix: subdomains should be [] if the host is an ip (#808)
+* don't pre-bound onerror [breaking change] (#800)
+* fix `ctx.<span class="apidocCodeKeywordSpan">flushHeaders</span>()` to use `res.flushHeaders()` instead of `res.writeHead()` (#
+795)
+* fix(response): correct response.writable logic (#782)
+* merge v1.1.2 and v1.2.0 changes
+* include `koa-convert` so that generator functions still work
+  * NOTE: generator functions are deprecated in v2 and will be removed in v3
+* improve linting
+* improve docs
 ...</pre></li>
     </ul>
 
@@ -1492,21 +1512,21 @@ inspect() {
   return this.header[field.toLowerCase()] || '';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
- *
- * @return {String} hostname:port
- * @api public
- */
 
-get host() {
-  const proxy = this.app.proxy;
-  let host = proxy &amp;&amp; this.<span class="apidocCodeKeywordSpan">get</span>('X-Forwarded-Host');
-  host = host || this.get('Host');
-  if (!host) return '';
-  return host.split(/\s*,\s*/)[0];
-},
+ * empty `request.query` objects are now always the same instance
+ * bump `fresh@0.3.0`
 
-/**
- * Parse the "Host" header field hostname
+0.20.0 / 2015-04-30
+==================
+
+Breaking change if you're using `this.<span class="apidocCodeKeywordSpan">get</span>('ua') === undefined` etc.
+For more details please checkout [#438](https://github.com/koajs/koa/pull/438).
+
+  * make sure helpers return strict string
+  * feat: alias response.headers to response.header
+
+0.19.1 / 2015-04-14
+==================
 ...</pre></li>
     </ul>
 
@@ -1526,21 +1546,20 @@ get host() {
   return o;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-/**
- * Context prototype.
- */
+* test against the latest version of node
+* add a lot of docs
 
-const proto = module.exports = {
+1.1.2 / 2015-11-05
+==================
 
-/**
- * util.<span class="apidocCodeKeywordSpan">inspect</span>() implementation, which
- * just returns the JSON output.
- *
- * @return {Object}
- * @api public
- */
+* ensure parseurl always working as expected
+* fix Application.<span class="apidocCodeKeywordSpan">inspect</span>() â€“ missing .proxy value.
 
-inspect() {
+2.0.0-alpha.3 / 2015-11-05
+==================
+
+* ensure parseurl always working as expected. #586
+* fix Application.inspect() â€“ missing .proxy value. Closes #563
 ...</pre></li>
     </ul>
 
@@ -1560,21 +1579,21 @@ inspect() {
   return typeis(type, types);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-* If there is no request body, `null` is returned.
-* If there is no content type, `false` is returned.
-* Otherwise, it returns the first `type` that matches.
-*
-* Examples:
-*
-*     // With Content-Type: text/html; charset=utf-8
-*     this.<span class="apidocCodeKeywordSpan">is</span>('html'); // =&gt; 'html'
-*     this.is('text/html'); // =&gt; 'text/html'
-*     this.is('text/*', 'application/json'); // =&gt; 'text/html'
-*
-*     // When Content-Type is application/json
-*     this.is('json', 'urlencoded'); // =&gt; 'json'
-*     this.is('application/json'); // =&gt; 'application/json'
-*     this.is('html', 'application/*'); // =&gt; 'application/json'
+==================
+
+* bump type-is
+
+0.8.0 / 2014-06-13
+==================
+
+* add `this.response.<span class="apidocCodeKeywordSpan">is</span>()``
+* remove `.status=string` and `res.statusString` #298
+
+0.7.0 / 2014-06-07
+==================
+
+* add `this.lastModified` and `this.etag` as both getters and setters for ubiquity #292.
+  See koajs/koa@4065bf7 for an explanation.
 ...</pre></li>
     </ul>
 
@@ -1712,21 +1731,21 @@ if ('ENOENT' == err.code) err.status = 404;
   ]);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
- * just returns the JSON output.
- *
- * @return {Object}
- * @api public
- */
 
-inspect() {
-  return this.<span class="apidocCodeKeywordSpan">toJSON</span>();
-},
+ * change res.type= to always default charset. Closes #252
+ * remove ctx.inspect() implementation. Closes #164
 
-/**
- * Return JSON representation.
- *
- * Here we explicitly invoke .toJSON() on each
- * object, as iteration will otherwise fail due
+0.5.2 / 2014-03-23
+==================
+
+ * fix: inspection of `app` and `app.<span class="apidocCodeKeywordSpan">toJSON</span>()`
+ * fix: let `this.throw`n errors provide their own status
+ * fix: overwriting of `content-type` w/ `HEAD` requests
+ * refactor: use statuses
+ * refactor: use escape-html
+ * bump dev deps
+
+0.5.1 / 2014-03-06
 ...</pre></li>
     </ul>
 
@@ -1742,7 +1761,23 @@ inspect() {
     <li>description and source-code<pre class="apidocCodePre">vary(field) {
   vary(this.res, field);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* remove `.status=string` and `res.statusString` #298
+
+0.7.0 / 2014-06-07
+==================
+
+* add `this.lastModified` and `this.etag` as both getters and setters for ubiquity #292.
+  See koajs/koa@4065bf7 for an explanation.
+* refactor `this.response.<span class="apidocCodeKeywordSpan">vary</span>()` to use [vary](https://github.com/expressjs/vary) #291
+* remove `this.response.append()` #291
+
+0.6.3 / 2014-06-06
+==================
+
+* fix res.type= when the extension is unknown
+* assert when non-error is passed to app.onerror #287
+...</pre></li>
     </ul>
 
 
